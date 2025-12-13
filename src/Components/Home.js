@@ -1,18 +1,17 @@
 import React from 'react';
-import { Grid, Box, Container, Typography, Card, CardContent, Paper, Button } from '@mui/material';
+import { Grid, Box, Container, Typography, Card, CardContent, Paper, Button, Chip, Divider } from '@mui/material';
 import Avatar from '@mui/material/Avatar';
-import Stack from '@mui/material/Stack';
-import PhoneIcon from '@mui/icons-material/Phone';
 import EmailIcon from '@mui/icons-material/Email';
-import PlaceIcon from '@mui/icons-material/Place';
 import InputBase from '@mui/material/InputBase';
 import IconButton from '@mui/material/IconButton';
 import PersonIcon from '@mui/icons-material/Person';
-import { useTheme } from '@mui/material/styles';
-import useMediaQuery from '@mui/material/useMediaQuery';
 import SendIcon from '@mui/icons-material/Send';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import GitHubIcon from '@mui/icons-material/GitHub';
+import CodeIcon from '@mui/icons-material/Code';
+import WebIcon from '@mui/icons-material/Web';
+import StorageIcon from '@mui/icons-material/Storage';
+import DesignServicesIcon from '@mui/icons-material/DesignServices';
 import logo from '../assets/logo.png';
 import Profile from '../assets/Profile.jpg';
 
@@ -101,11 +100,78 @@ const styles = {
         justifyContent: 'center',
         marginTop: '1rem',
     },
+    sectionBox: {
+        marginBottom: '3rem',
+        padding: '2rem',
+        backgroundColor: '#fff',
+        borderRadius: '8px',
+        boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
+    },
+    skillChip: {
+        margin: '0.5rem',
+        padding: '0.5rem 1rem',
+    },
+    projectCard: {
+        height: '100%',
+        transition: 'transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out',
+        '&:hover': {
+            transform: 'translateY(-5px)',
+            boxShadow: '0 4px 20px rgba(0,0,0,0.15)',
+        },
+    },
+    timelineItem: {
+        marginBottom: '2rem',
+    },
 };
 
 function Home() {
-    const theme = useTheme();
-    const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+
+    const skills = {
+        frontend: ['React.js', 'JavaScript', 'HTML5', 'CSS3', 'Material-UI', 'Responsive Design', 'TypeScript'],
+        backend: ['Node.js', 'Express.js', 'PostgreSQL', 'RESTful APIs', 'MySQL', 'Firebase', 'GraphQL'],
+        tools: ['Git', 'GitHub', 'VS Code', 'Postman', 'npm', 'Webpack', 'Docker'],
+        other: ['PERN Stack', 'Agile/Scrum', 'Problem Solving', 'Team Collaboration', 'Code Review']
+    };
+
+    const projects = [
+        {
+            title: 'E-Commerce Platform',
+            description: 'Full-stack e-commerce application with user authentication, product management, shopping cart, and payment integration.',
+            technologies: ['React', 'Node.js', 'MongoDB', 'Stripe API'],
+            status: 'Completed'
+        },
+        {
+            title: 'Portfolio Website',
+            description: 'Responsive portfolio website showcasing projects, skills, and professional experience with modern UI/UX design.',
+            technologies: ['React', 'Material-UI', 'CSS3'],
+            status: 'In Progress'
+        }
+    ];
+
+    const experience = [
+        {
+            title: 'Full Stack Developer',
+            company: 'JeonSoft Corporation',
+            period: '2023 - Present',
+            description: 'Developing and maintaining full-stack web applications using the PERN stack (PostgreSQL, Express, React, Node.js). Building scalable and efficient solutions while collaborating with cross-functional teams to deliver high-quality software.',
+            achievements: [
+                'Developing full-stack applications using PERN stack technologies',
+                'Building RESTful APIs with Express.js and Node.js',
+                'Creating responsive user interfaces with React.js',
+                'Working with PostgreSQL databases for data management',
+                'Collaborating with team members on agile development projects'
+            ]
+        }
+    ];
+
+    const education = [
+        {
+            degree: 'Bachelor of Science in Computer Science',
+            school: 'Our Lady of Fatima University',
+            period: '2019 - 2023',
+            description: 'Focused on software engineering, web development, and database management.'
+        }
+    ];
 
     return (
         <Container style={styles.container}>
@@ -155,32 +221,195 @@ function Home() {
 
                 {/* Right Column */}
                 <Grid item xs={12} md={6}>
-                    <Typography variant="h4" style={styles.sectionTitle}>Hello, a bit about me:</Typography>
-                    <Typography variant="body1" paragraph style={{ fontSize: '1rem', fontWeight: '300' }}>
-                        Lorem ipsum dolor sit amet. Ex quis possimus 33 voluptatem suscipit eum deserunt minus est voluptatum rerum eum quia ratione.
-                        Aut accusantium enim et enim quod qui eligendi distinctio ut consequatur error qui veritatis explicabo.
-                        Est praesentium veritatis qui provident error in voluptas consectetur.
-                        At fugiat magnam aut unde tenetur vel quod quasi sit nesciunt quos nam consequatur iste sit deserunt rerum!
-                        Et corrupti quasi cum nesciunt iste sed eaque enim. Ut harum ducimus eum velit dolor vel fugiat animi.
-                    </Typography>
+                    {/* About Me Section */}
+                    <Box style={styles.sectionBox}>
+                        <Typography variant="h4" style={styles.sectionTitle}>Hello, a bit about me:</Typography>
+                        <Typography variant="body1" paragraph style={{ fontSize: '1rem', fontWeight: '300', lineHeight: '1.8' }}>
+                            I'm a passionate Full Stack Developer with expertise in building modern web applications. 
+                            I specialize in creating responsive, user-friendly interfaces and robust backend systems. 
+                            With a strong foundation in both frontend and backend technologies, I bring ideas to life 
+                            through clean, efficient code and innovative solutions.
+                        </Typography>
+                        <Typography variant="body1" paragraph style={{ fontSize: '1rem', fontWeight: '300', lineHeight: '1.8' }}>
+                            My journey in web development started with a curiosity about how websites work, and it has 
+                            evolved into a career focused on creating exceptional digital experiences. I'm always eager 
+                            to learn new technologies and take on challenging projects that push my boundaries.
+                        </Typography>
+                        <Typography variant="body1" paragraph style={{ fontSize: '1rem', fontWeight: '300', lineHeight: '1.8' }}>
+                            When I'm not coding, I enjoy contributing to open-source projects, writing technical blogs, 
+                            and staying updated with the latest industry trends. I believe in writing code that is not 
+                            just functional, but also maintainable and scalable.
+                        </Typography>
+                    </Box>
 
-                    <Grid container spacing={2}>
+                    {/* Quick Links */}
+                    <Grid container spacing={2} style={{ marginBottom: '2rem' }}>
                         <Grid item xs={4}>
                             <Card style={styles.card}>
-                                <CardContent style={styles.cardContent}>My Resume</CardContent>
+                                <CardContent style={styles.cardContent}>
+                                    <CodeIcon sx={{ fontSize: 40, mb: 1 }} />
+                                    <Typography variant="h6">My Resume</Typography>
+                                </CardContent>
                             </Card>
                         </Grid>
                         <Grid item xs={4}>
                             <Card style={styles.card}>
-                                <CardContent style={styles.cardContent}>My Projects</CardContent>
+                                <CardContent style={styles.cardContent}>
+                                    <WebIcon sx={{ fontSize: 40, mb: 1 }} />
+                                    <Typography variant="h6">My Projects</Typography>
+                                </CardContent>
                             </Card>
                         </Grid>
                         <Grid item xs={4}>
                             <Card style={styles.card}>
-                                <CardContent style={styles.cardContent}>My Skills</CardContent>
+                                <CardContent style={styles.cardContent}>
+                                    <DesignServicesIcon sx={{ fontSize: 40, mb: 1 }} />
+                                    <Typography variant="h6">My Skills</Typography>
+                                </CardContent>
                             </Card>
                         </Grid>
                     </Grid>
+
+                    {/* Skills Section */}
+                    <Box style={styles.sectionBox}>
+                        <Typography variant="h4" style={styles.sectionTitle}>Technical Skills</Typography>
+                            <Divider style={{ marginBottom: '1.5rem' }} />
+                            
+                            <Typography variant="h6" style={{ marginTop: '1.5rem', marginBottom: '1rem', fontWeight: 'bold' }}>
+                                <CodeIcon sx={{ verticalAlign: 'middle', mr: 1 }} />
+                                Frontend Technologies
+                            </Typography>
+                            <Box>
+                                {skills.frontend.map((skill, index) => (
+                                    <Chip key={index} label={skill} style={styles.skillChip} color="primary" variant="outlined" />
+                                ))}
+                            </Box>
+
+                            <Typography variant="h6" style={{ marginTop: '1.5rem', marginBottom: '1rem', fontWeight: 'bold' }}>
+                                <StorageIcon sx={{ verticalAlign: 'middle', mr: 1 }} />
+                                Backend Technologies
+                            </Typography>
+                            <Box>
+                                {skills.backend.map((skill, index) => (
+                                    <Chip key={index} label={skill} style={styles.skillChip} color="secondary" variant="outlined" />
+                                ))}
+                            </Box>
+
+                            <Typography variant="h6" style={{ marginTop: '1.5rem', marginBottom: '1rem', fontWeight: 'bold' }}>
+                                Tools & Technologies
+                            </Typography>
+                            <Box>
+                                {skills.tools.map((skill, index) => (
+                                    <Chip key={index} label={skill} style={styles.skillChip} color="default" variant="outlined" />
+                                ))}
+                            </Box>
+
+                            <Typography variant="h6" style={{ marginTop: '1.5rem', marginBottom: '1rem', fontWeight: 'bold' }}>
+                                Other Skills
+                            </Typography>
+                            <Box>
+                                {skills.other.map((skill, index) => (
+                                    <Chip key={index} label={skill} style={styles.skillChip} color="success" variant="outlined" />
+                                ))}
+                            </Box>
+                    </Box>
+
+                    {/* Projects Section */}
+                    <Box style={styles.sectionBox}>
+                            <Typography variant="h4" style={styles.sectionTitle}>My Projects</Typography>
+                            <Divider style={{ marginBottom: '1.5rem' }} />
+                            
+                            <Grid container spacing={2}>
+                                {projects.map((project, index) => (
+                                    <Grid item xs={12} key={index}>
+                                        <Card style={styles.projectCard}>
+                                            <CardContent>
+                                                <Typography variant="h5" style={{ fontWeight: 'bold', marginBottom: '0.5rem' }}>
+                                                    {project.title}
+                                                </Typography>
+                                                <Chip 
+                                                    label={project.status} 
+                                                    size="small" 
+                                                    color={project.status === 'Completed' ? 'success' : 'warning'}
+                                                    style={{ marginBottom: '1rem' }}
+                                                />
+                                                <Typography variant="body1" paragraph style={{ fontWeight: '300', lineHeight: '1.8' }}>
+                                                    {project.description}
+                                                </Typography>
+                                                <Box style={{ marginTop: '1rem' }}>
+                                                    <Typography variant="subtitle2" style={{ fontWeight: 'bold', marginBottom: '0.5rem' }}>
+                                                        Technologies Used:
+                                                    </Typography>
+                                                    {project.technologies.map((tech, techIndex) => (
+                                                        <Chip 
+                                                            key={techIndex} 
+                                                            label={tech} 
+                                                            size="small" 
+                                                            style={{ margin: '0.25rem' }}
+                                                            variant="outlined"
+                                                        />
+                                                    ))}
+                                                </Box>
+                                            </CardContent>
+                                        </Card>
+                                    </Grid>
+                                ))}
+                            </Grid>
+                    </Box>
+
+                    {/* Resume/Experience Section */}
+                    <Box style={styles.sectionBox}>
+                            <Typography variant="h4" style={styles.sectionTitle}>Professional Experience</Typography>
+                            <Divider style={{ marginBottom: '1.5rem' }} />
+                            
+                            {experience.map((exp, index) => (
+                                <Box key={index} style={{ marginBottom: '2rem' }}>
+                                    <Typography variant="h5" style={{ fontWeight: 'bold', color: '#0288d1' }}>
+                                        {exp.title}
+                                    </Typography>
+                                    <Typography variant="h6" style={{ fontWeight: '600', marginTop: '0.25rem' }}>
+                                        {exp.company}
+                                    </Typography>
+                                    <Typography variant="body2" style={{ color: '#666', marginBottom: '0.5rem' }}>
+                                        {exp.period}
+                                    </Typography>
+                                    <Typography variant="body1" paragraph style={{ fontWeight: '300', lineHeight: '1.8' }}>
+                                        {exp.description}
+                                    </Typography>
+                                    <Typography variant="subtitle2" style={{ fontWeight: 'bold', marginTop: '0.5rem' }}>
+                                        Key Achievements:
+                                    </Typography>
+                                    <ul style={{ paddingLeft: '1.5rem', marginTop: '0.5rem' }}>
+                                        {exp.achievements.map((achievement, achIndex) => (
+                                            <li key={achIndex} style={{ marginBottom: '0.25rem', fontWeight: '300' }}>
+                                                {achievement}
+                                            </li>
+                                        ))}
+                                    </ul>
+                                    {index < experience.length - 1 && <Divider style={{ marginTop: '1.5rem' }} />}
+                                </Box>
+                            ))}
+
+                            <Typography variant="h4" style={{...styles.sectionTitle, marginTop: '3rem'}}>Education</Typography>
+                            <Divider style={{ marginBottom: '1.5rem' }} />
+                            
+                            {education.map((edu, index) => (
+                                <Box key={index}>
+                                    <Typography variant="h5" style={{ fontWeight: 'bold', color: '#0288d1' }}>
+                                        {edu.degree}
+                                    </Typography>
+                                    <Typography variant="h6" style={{ fontWeight: '600', marginTop: '0.25rem' }}>
+                                        {edu.school}
+                                    </Typography>
+                                    <Typography variant="body2" style={{ color: '#666', marginBottom: '0.5rem' }}>
+                                        {edu.period}
+                                    </Typography>
+                                    <Typography variant="body1" style={{ fontWeight: '300', lineHeight: '1.8' }}>
+                                        {edu.description}
+                                    </Typography>
+                                </Box>
+                            ))}
+                    </Box>
                         <Paper component="form" sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: '100%', mb: 2 }}>
                         <IconButton sx={{ p: '10px' }} aria-label="menu">
                             <PersonIcon />
