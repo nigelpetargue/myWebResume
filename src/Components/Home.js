@@ -438,7 +438,7 @@ function Home() {
 
             {/* Footer */}
             <Box style={styles.footer}>
-                <Typography variant="body2">&copy; 2025 Blitzker. All rights reserved.</Typography>
+                <Typography variant="body2">&copy; 2025 Blitzker. All rights reserved. I ❤️ JeonSoft Corp.</Typography>
                 <Box style={styles.socialIcons}>
                     <IconButton color="inherit" href="https://linkedin.com" target="_blank">
                         <LinkedInIcon />
